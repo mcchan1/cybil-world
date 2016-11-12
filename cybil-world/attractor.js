@@ -6,6 +6,7 @@ var Attractor = function(x,y) {
   this.col = color(255);
   this.G = .05;
 
+  //change color on intersect/collide
   this.changeColor = function(red) {
     this.col = color(random(255),255,0,100);
   }

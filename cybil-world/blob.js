@@ -82,6 +82,7 @@ function Penguin(x,y,r) {
   ellipse(x-7, y-5, 10); 
   ellipse(x+7, y-5,10);
 
+  //FACE 
   fill(200,0,100);
   ellipse(x, y+5, 8); //mouth
   ellipse(x-7, y-5, 5); //iris

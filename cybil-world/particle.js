@@ -39,7 +39,7 @@ function Particle(x,y,r) {
 			this.pos.x = width;
 		}
 	}
-
+  //Intersect and then do something
    this.intersects = function(other) {
    	//define borders of intersection 
     var d = dist(this.pos.x, this.pos.y, other.x, other.y);
@@ -49,13 +49,14 @@ function Particle(x,y,r) {
 	      return false;
 	    }
  	 }
-
+   //change color on intersection 
  	this.changeColor = function(red) {
 	    this.col = color(100,random(255),200);
 	}
 }
 
-
+//Cybil wanted heart shape particles for attractor
+//TODO remember where I found formula for heart shape
 function Heart(x,y,width,height){
 
   var WIDTH = width / 2 * 0.85;

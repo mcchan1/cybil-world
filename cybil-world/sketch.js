@@ -1,17 +1,23 @@
+
+//Heart Particles Attracted to 'Sun'
 var particles=[];
 var attractor;
 
-var flock;
-//var trees = [];
+
+//Individual TRees
 var tree;
 var tree2;
 var tree3;
 var tree4;
 
 var flowers = [];
+
+//Flocking and Sliders 
+var flock;
 var cohesionSlider;
 var separationSlider;
 var alignmentSlider;
+
 
 var clouds = [];
 
@@ -25,8 +31,10 @@ function setup() {
   var canvas = createCanvas(1000, 600);
   canvas.parent('canvas');
 
+  //Flow field for Blobs. Arg is length of vector in pixels
   flowfield = new FlowField(40);
 
+  //Initialize Blob (x,y,maxspeed, maxforce)
   for (var i =0; i< 40; i++) {
     blobs.push(new Blob(random(width), random(height), random(2,5), random(0.1,0.5)));
   }
@@ -46,7 +54,7 @@ function setup() {
   
   //FLOCK
   flock = new Flock();
-  // Add an initial set of boids into the system
+  // Add an initial set of boids/Fish into the system
   for (var i = 0; i < 80; i++) {
     var b = new Boid(width / 2, height / 2);
     flock.addBoid(b);
@@ -58,9 +66,6 @@ function setup() {
   }
 
   //TREES
-  // for (var i = 0; i < trees<2; i++) {
-  //   trees[i] = new Tree(random(width), height);
-  // };
   tree = new Tree(200, height,80,2);
   tree2 = new Tree(400,height,80,1);
   tree3 = new Tree(600,height,100,1);
@@ -77,6 +82,7 @@ function setup() {
 function draw() {
   background(75,0,130,50);
 
+  //Flow field for Blobs
   if(debug) flowfield.display();
 
   for (var i = 0; i < blobs.length; i++) {
@@ -84,10 +90,11 @@ function draw() {
     blobs[i].run();
   }
 
-
+  //Flowers at request 
   for (var i = 0; i < flowers.length; i++) {
     flowers[i].display();
   };
+   
    //TREES
   stroke(0,255,0);
   tree.display();
@@ -98,7 +105,7 @@ function draw() {
   //BOIDS
   flock.run();
 
-
+  //Particles and Blob change color when they intersect/collide 
   for (var i = 0; i < particles.length; i++) {
     var force = attractor.calculateAttraction(particles[i]);
         
@@ -112,6 +119,7 @@ function draw() {
     }
   }
 
+  //Wind Vector applied to Clouds
   var wind = createVector(.01,0);
 
   for (var i = 0; i< clouds.length; i++) {
@@ -126,6 +134,8 @@ function draw() {
   attractor.display();  
 
 }
+
+//Functions for FLOW FIELD 
 function keyPressed() {
   if(key == ' ') {
     debug = !debug;
@@ -134,4 +144,5 @@ function keyPressed() {
 function mousePressed() {
   flowfield.init(); 
 }
-}
+
+} //end of Draw function 

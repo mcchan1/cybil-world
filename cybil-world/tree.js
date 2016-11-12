@@ -1,3 +1,5 @@
+//based on fractal lession Nature of Code
+
 function Tree(x,y, len, generation) {
   //angle = random(-PI/3, PI/3);
   angleRight = random(0,PI/3);
