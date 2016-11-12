@@ -15,9 +15,21 @@ var alignmentSlider;
 
 var clouds = [];
 
+//Flow field
+var blobs = [];
+var debug = true; 
+var flowfield; 
+
+
 function setup() {
   var canvas = createCanvas(1000, 600);
   canvas.parent('canvas');
+
+  flowfield = new FlowField(40);
+
+  for (var i =0; i< 40; i++) {
+    blobs.push(new Blob(random(width), random(height), random(2,5), random(0.1,0.5)));
+  }
 
   //attractor - 'Sun' in middle
   attractor = new Attractor(600, 200);
@@ -65,6 +77,14 @@ function setup() {
 function draw() {
   background(75,0,130,50);
 
+  if(debug) flowfield.display();
+
+  for (var i = 0; i < blobs.length; i++) {
+    blobs[i].follow(flowfield);
+    blobs[i].run();
+  }
+
+
   for (var i = 0; i < flowers.length; i++) {
     flowers[i].display();
   };
@@ -105,4 +125,13 @@ function draw() {
   //attractor.update();
   attractor.display();  
 
+}
+function keyPressed() {
+  if(key == ' ') {
+    debug = !debug;
+  }
+
+function mousePressed() {
+  flowfield.init(); 
+}
 }
