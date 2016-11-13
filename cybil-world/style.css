@@ -1,10 +1,17 @@
-.windSliderX{
-	width: 150px;
-	
-
+body {
+	background: hotpink; 
 }
 
-.windSliderY {
-	width: 150px;
+.headline {
+	margin: 5px;
+	text-align: center;
+}
 
+.sliders{
+	display: inline-block;
+	margin: 5px;
+}
+
+.instructions {
+	margin: 5px;
 }

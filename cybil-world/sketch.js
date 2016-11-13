@@ -28,7 +28,7 @@ var flowfield;
 
 
 function setup() {
-  var canvas = createCanvas(1000, 600);
+  var canvas = createCanvas(windowWidth, 600);
   canvas.parent('canvas');
 
   //Flow field for Blobs. Arg is length of vector in pixels
