@@ -80,26 +80,32 @@ function setup() {
   
   //Cybil 
   cybil = new Cybil(500,500,20); 
-
-}
-
+} //END OF SETUP 
 
 function draw() {
   background(75,0,130,50);
 
+  //CYBIL MOVER
   cybil.keyPressed();
   cybil.update();
   cybil.edges();
   cybil.display(); 
+   
+      
+
   
  
-
   //Flow field for Blobs
   if(debug) flowfield.display();
 
   for (var i = 0; i < blobs.length; i++) {
     blobs[i].follow(flowfield);
     blobs[i].run();
+    if (blobs[i].intersects(cybil)){
+      //DO SOMETHING ON INTERSECTION WITH CYBIL 
+      cybil.test();
+      blobs.splice(blobs.indexOf(this.blobs),1);
+    }
   }
 
   //Flowers at request 
@@ -142,17 +148,16 @@ function draw() {
    
     clouds[i].applyForce(wind);    
   }
-  //attractor.update();
+ 
+  //attractor.update(); 
   attractor.display();  
-
-//}
 
   //Functions for FLOW FIELD 
   function keyPressed() {
     if(key == ' ') {
       debug = !debug;
     }
-}
+  }
 
   function mousePressed() {
     flowfield.init(); 

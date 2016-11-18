@@ -43,7 +43,7 @@ function Particle(x,y,r) {
    this.intersects = function(other) {
    	//define borders of intersection 
     var d = dist(this.pos.x, this.pos.y, other.x, other.y);
-	    if (d < this.r + other.r && d > this.r + other.r -3) {
+	    if (d < this.r + other.r && d > this.r + other.r-3 ) {
 	      return true;
 	    } else {
 	      return false;

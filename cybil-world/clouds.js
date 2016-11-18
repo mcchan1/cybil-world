@@ -21,7 +21,7 @@ function Cloud (x,y,r) {
 	   this.velocity.add(this.acceleration);
 	   this.position.add(this.velocity);
 	   this.velocity.limit(this.maxspeed);
-	  	this.acceleration.set(0,0);
+	   this.acceleration.set(0,0);
 	}
 
 	 // Wraparound

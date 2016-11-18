@@ -61,6 +61,20 @@ function Cybil(x,y,r) {
 	  	this.acceleration.add(force);
   }
 
+   this.intersects = function(other) {
+   	//define borders of intersection 
+    var d = dist(this.pos.x, this.pos.y, other.x, other.y);
+	    if (d < this.r + other.r && d > this.r + other.r -20) {
+	      return true;
+	    } else {
+	      return false;
+	    }
+ 	 }
+
+ 	 this.test = function() {
+ 	 	console.log('cybil! ');
+ 	 }
+
   //need to make it a vector instead of position
   	this.keyPressed = function() {
   		var arrowSpeed = 2; 

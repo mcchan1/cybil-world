@@ -58,7 +58,7 @@ function Blob (x, y, maxspeed, maxforce) {
     //fill(127);
     stroke(200);
     strokeWeight(1);
-    penguin = new Penguin(this.position.x, this.position.y, 30);
+    bunny = new Bunny(this.position.x, this.position.y, 30);
   //   push();
   //   translate(this.position.x, this.position.y);
   //   rotate(theta);
@@ -70,10 +70,20 @@ function Blob (x, y, maxspeed, maxforce) {
   //   pop();
   // }
   }
+
+   this.intersects = function(other) {
+    //define borders of intersection 
+    var d = dist(this.position.x, this.position.y, other.x, other.y);
+      if (d < this.r + other.r && d > this.r + other.r-10) {
+        return true;
+      } else {
+        return false;
+      }
+   }
 } //end of Blob
 
 
-function Penguin(x,y,r) {
+function Bunny(x,y,r) {
   fill(200,255,0);
   ellipse(x,y,r+10,r);
 
