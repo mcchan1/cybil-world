@@ -1,4 +1,9 @@
 
+function preload() {
+	bebe = loadImage('Panda.png');
+
+}
+
 function Cybil(x,y,r) {
 
 	this.pos = createVector(x,y);
@@ -11,14 +16,14 @@ function Cybil(x,y,r) {
   	this.maxspeed = 4;
 
   	this.display = function() {
-
   		stroke(255);
   		fill(this.col);
-  		//image(bebe,this.pos.x,this.pos.y)
-  		ellipse(this.pos.x, this.pos.y, r*4); 
+
+  		image(bebe,this.pos.x,this.pos.y);
+  		bebe.resize(150,150);
+  		//ellipse(this.pos.x, this.pos.y, r*4); 
 
   	}
-
 
   	this.update = function() {
 	   this.vel.add(this.acc);
@@ -26,9 +31,8 @@ function Cybil(x,y,r) {
 	   this.vel.limit(this.maxspeed);
 	   this.acc.set(0,0);
 	}
-  
 
-	//WRAPAROUND OR BOUNCE OF EDGES
+//WRAPAROUND OR BOUNCE OF EDGES
   this.edges = function() {
   	//WRAPAROUND EDGES OF CANVAS
     if (this.pos.x < -this.r) this.pos.x = width + this.r;
@@ -52,8 +56,6 @@ function Cybil(x,y,r) {
 
    this.applyForce = function(force) {
     // We could add mass here if we want A = F / M
-    
-
     var forceCopy = force.copy();
 	  	forceCopy.div(this.r);
 	  	this.acceleration.add(force);
