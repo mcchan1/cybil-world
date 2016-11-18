@@ -26,9 +26,11 @@ var blobs = [];
 var debug = true; 
 var flowfield; 
 
+//Cybil 
+var cybil; 
 
 function setup() {
-  var canvas = createCanvas(windowWidth, 600);
+  var canvas = createCanvas(1000, 600);
   canvas.parent('canvas');
 
   //Flow field for Blobs. Arg is length of vector in pixels
@@ -75,12 +77,22 @@ function setup() {
   for (var i = 0; i < 8; i++) {
     flowers[i] = new Flower(random(width), height);
   };
- 
+  
+  //Cybil 
+  cybil = new Cybil(500,500,20); 
+
 }
 
 
 function draw() {
   background(75,0,130,50);
+
+  cybil.keyPressed();
+  cybil.update();
+  cybil.edges();
+  cybil.display(); 
+  
+ 
 
   //Flow field for Blobs
   if(debug) flowfield.display();
@@ -133,16 +145,17 @@ function draw() {
   //attractor.update();
   attractor.display();  
 
+//}
+
+  //Functions for FLOW FIELD 
+  function keyPressed() {
+    if(key == ' ') {
+      debug = !debug;
+    }
 }
 
-//Functions for FLOW FIELD 
-function keyPressed() {
-  if(key == ' ') {
-    debug = !debug;
+  function mousePressed() {
+    flowfield.init(); 
   }
-
-function mousePressed() {
-  flowfield.init(); 
-}
 
 } //end of Draw function 

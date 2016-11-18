@@ -36,7 +36,7 @@ function FlowField(r) {
       xoff += 0.1;
     }
   };
-  this.init();
+  this.init(); //call init()
 
   // Draw every vector
   this.display = function() {
