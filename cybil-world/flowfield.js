@@ -72,4 +72,10 @@ function FlowField(r) {
     //line(len,0,len-arrowsize,-arrowsize/2);
     pop();
   };
+
+  // this.keyPressed = function() {
+  //   if(key == ' ') {
+  //     debug = !debug;
+  //   }
+  // }
 }
